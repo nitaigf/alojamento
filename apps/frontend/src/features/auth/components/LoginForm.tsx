@@ -26,9 +26,19 @@ export const LoginForm = component$(() => {
 
   return (
     <div class="flex flex-col gap-2">
-      <input placeholder="Email ou usuário" bind:value={identifier} class="p-2 border rounded" />
-      <input type="password" placeholder="Senha" bind:value={password} class="p-2 border rounded" />
-      <button onClick$={handleLogin} class="bg-blue-600 text-white p-2 rounded">Entrar</button>
+      <form
+        onSubmit$={(e) => {
+          e.preventDefault(); // previne reload da página
+          handleLogin(); // chama sua lógica
+        }}
+        class="flex flex-col gap-2"
+      >
+        <input placeholder="Email ou usuário" bind:value={identifier} class="p-2 border rounded" />
+        <input type="password" placeholder="Senha" bind:value={password} class="p-2 border rounded" />
+        <button type="button" onClick$={handleLogin} class="bg-blue-600 text-white p-2 rounded">
+          Entrar
+        </button>
+      </form>
     </div>
   );
 });

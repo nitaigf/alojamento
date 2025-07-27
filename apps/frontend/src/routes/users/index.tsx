@@ -2,11 +2,14 @@
 import { component$, useResource$, Resource } from "@builder.io/qwik";
 import { listUsers } from "~/features/users/services/user.service";
 import { useAuthGuard } from "~/lib/hooks/useAuthGuard";
-import { clearUser } from "~/stores/auth";
+import { useAuth } from "~/stores/auth";
 import { useNavigate } from "@builder.io/qwik-city";
 
 export default component$(() => {
   useAuthGuard();
+
+  const { clearUser } = useAuth();
+
   const nav = useNavigate();
   const users = useResource$(() => listUsers());
 

@@ -1,5 +1,5 @@
 // features/users/services/user.service.ts
-import { getCurrentUser } from "~/stores/auth";
+import { getCurrentUser } from "~/stores/global-store";
 
 export async function createUser(user: { name: string; email: string; password: string }) {
   const currentUser = getCurrentUser();
